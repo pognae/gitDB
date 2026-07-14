@@ -88,7 +88,7 @@ def crawl_hotdeals():
                 
     print(f"Found {len(links)} links")
     
-    for link in list(links)[:10]:
+    for link in list(links):
         try:
             import time
             time.sleep(2)
