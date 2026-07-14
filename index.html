@@ -245,8 +245,7 @@
 
     <script>
         // 현재 레포지토리의 Github Actions 탭으로 이동하기 위한 링크 설정
-        const repoPath = window.location.pathname.split('/')[1] || 'gitDB';
-        const actionsUrl = `https://github.com/${window.location.hostname.split('.')[0]}/${repoPath}/actions`;
+        const actionsUrl = `https://github.com/pognae/gitDB/actions`;
         document.getElementById('manual-trigger-btn').href = actionsUrl;
 
         async function loadData() {
