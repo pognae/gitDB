@@ -25,7 +25,8 @@
     "images": [],
     "links": [
       "https://brand.naver.com/nlmall/products/13647967414"
-    ]
+    ],
+    "created_at": "2026-07-14T14:08:01.126195"
   },
   "10081299339": {
     "url": "https://www.fmkorea.com/10081299339",
@@ -40,5 +41,45 @@
     "links": [
       "https://brand.naver.com/decathlonkorea/products/6040290219"
     ]
+  },
+  "10081480616": {
+    "url": "https://www.fmkorea.com/10081480616",
+    "images": [],
+    "links": [
+      "https://harimmall.com/product/detail.html?product_no=1746"
+    ],
+    "created_at": "2026-07-14T14:07:52.796733"
+  },
+  "10081624842": {
+    "url": "https://www.fmkorea.com/10081624842",
+    "images": [],
+    "links": [
+      "https://ko.aliexpress.com/item/1005012461455550.html"
+    ],
+    "created_at": "2026-07-14T14:07:55.558089"
+  },
+  "10081413602": {
+    "url": "https://www.fmkorea.com/10081413602",
+    "images": [],
+    "links": [
+      "https://www.lotteon.com/p/product/LO2576145132"
+    ],
+    "created_at": "2026-07-14T14:07:58.305326"
+  },
+  "10081425248": {
+    "url": "https://www.fmkorea.com/10081425248",
+    "images": [],
+    "links": [
+      "https://www.lotteon.com/p/product/LO2049790089"
+    ],
+    "created_at": "2026-07-14T14:08:04.121488"
+  },
+  "10081513472": {
+    "url": "https://www.fmkorea.com/10081513472",
+    "images": [],
+    "links": [
+      "https://item.gmarket.co.kr/Item?goodscode=4578982969"
+    ],
+    "created_at": "2026-07-14T14:08:06.935598"
   }
 }

@@ -91,8 +91,10 @@ def crawl_hotdeals():
     for link in list(links):
         try:
             import time
-            time.sleep(2)
-            print(f"Crawling {link}...")
+            import random
+            delay = random.uniform(10, 20)
+            time.sleep(delay)
+            print(f"Crawling {link} (waited {delay:.2f}s)...")
             res = requests.get(link, headers=headers)
             res.raise_for_status()
             detail_soup = BeautifulSoup(res.text, 'html.parser')
