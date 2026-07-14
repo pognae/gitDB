@@ -42,6 +42,52 @@
 
 ---
 
+## 🌐 API 연동 및 데이터 필터링 가이드 (다른 사이트에서 활용하기)
+
+Github Pages 서버는 정적 파일(Static)을 서빙하므로 백엔드 파라미터(`?limit=10`)를 직접 사용할 수 없습니다. 따라서 다른 사이트에서 데이터를 활용하실 때는 **전체 JSON을 불러온 뒤 프론트엔드(JavaScript)에서 데이터를 필터링**하는 방식을 권장합니다.
+
+```javascript
+// [사용 예시] 외부 사이트에서 최신 데이터 필터링해서 가져오기
+async function getHotdeals(options = {}) {
+    const response = await fetch('https://pognae.github.io/gitDB/api/data.json');
+    const data = await response.json();
+    
+    // 객체를 배열로 변환
+    let deals = Object.entries(data).map(([id, info]) => ({
+        id: id,
+        ...info // url, images, links, created_at 포함됨
+    }));
+
+    // 1. 날짜 범위 필터링
+    if (options.startDate) {
+        deals = deals.filter(deal => new Date(deal.created_at) >= new Date(options.startDate));
+    }
+    if (options.endDate) {
+        deals = deals.filter(deal => new Date(deal.created_at) <= new Date(options.endDate));
+    }
+
+    // 2. 최신순 정렬
+    deals.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    // 3. 갯수 제한 (Limit)
+    if (options.limit) {
+        deals = deals.slice(0, options.limit);
+    }
+
+    return deals;
+}
+
+// 활용 예시: 2026-07-01 부터 생성된 최신 5개 데이터 가져오기
+getHotdeals({
+    startDate: '2026-07-01',
+    limit: 5
+}).then(filteredDeals => {
+    console.log('가져온 핫딜:', filteredDeals);
+});
+```
+
+---
+
 ## 📂 파일 구조 및 설명
 
 - `crawler.py`: 핵심 파이썬 크롤링 로직. 데이터베이스(`hotdeals.db`)를 업데이트하고 `data.json`을 생성.
