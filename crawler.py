@@ -25,8 +25,19 @@ def init_db():
     conn.close()
 
 def save_to_db(key, value_dict):
+    from datetime import datetime
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
+    
+    # 기존 데이터가 있으면 created_at 유지, 없으면 현재 시간 기록
+    c.execute('SELECT value FROM deals WHERE key=?', (key,))
+    row = c.fetchone()
+    if row:
+        old_val = json.loads(row[0])
+        value_dict['created_at'] = old_val.get('created_at', datetime.now().isoformat())
+    else:
+        value_dict['created_at'] = datetime.now().isoformat()
+        
     value_json = json.dumps(value_dict, ensure_ascii=False)
     c.execute('''
         INSERT INTO deals (key, value)
